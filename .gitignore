@@ -1,0 +1,10 @@
+
+# Latex-kompilering
+*.out
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.spl
+main.synctex.gz
+_minted-main/
