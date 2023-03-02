@@ -8,3 +8,11 @@
 *.spl
 main.synctex.gz
 _minted-main/
+
+# Python venvs
+.venvs/
+.venv/
+.env/
+
+# Garbage files
+__pychache__/
