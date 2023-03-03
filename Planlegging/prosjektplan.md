@@ -7,16 +7,31 @@
 ## Arbeidsfordeling
 (Forslag til arbeidsoppgaver)
 - Dataanalyse
+    - Analyse av magnetisk nord
+    - Analyse av geografisk nord
 - Datainnsamling
-- 
+    - Alle skal bli med å ta målinger av magnetfelt
+    - (navn, navn, *navn) måler geografisk nord
+- Rapport
+    - Alle er med på rapport
+    - Tar egne deler avhengig av hva man jobbet med av data
 
 ## Konflikthåndtering
 (Forslag)
 - I tilfellet hvor bare deler av gruppen er involvert trer den uavhengige delen inn som meklere.
 - Hvis hele gruppen blir involvert, blir Persson satt opp som mekler
+- Dersom dette ikke er tilstrekkelig, følger vi norsk rettergang
 ## Risikovurdering
-
-
+### Psykiske skader
+(forslag)
+- Fare for emosjonelle skader
+- Fare for utbrenning
+- Fare for tidspress
+- Fare for stress
+- Fare for søvnmangel
+- Fare for depresjon
+### Fysiske skader
+- Stor fysisk belastning
  
 # Innhold
 ## Prosjektplanen skal inneholde:
@@ -44,15 +59,6 @@ bruke på de forskjellige målingene/oppgavene.
 • En beskrivelse av hvordan man løser konflikter som kan oppstå i gruppen.
 • Risikovurdering.
 28 KAPITTEL 3. PROSJEKT
-
-
-Rapporten skal inneholde:
-• En beskrivelse av dine metoder og instrumentene som brukes.
-• En diskusjon om de tekniske aspektene ved smarttelefonen som måleverktøy (begrensninger, feil o.s.v.)
-• En grundig feilanalyse, inkludert diskusjon av ulike feilkilder (instrumentell, statistisk o.s.v.).
-• En sammenligning med andre målinger og smarttelefon-modeller hvis aktuelt.
-• En diskusjon om hvordan målingene og/eller metoden kan forbedres.
-
 
 
 # Phyphox
