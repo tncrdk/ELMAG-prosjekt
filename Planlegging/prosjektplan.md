@@ -16,6 +16,8 @@
     - Alle er med på rapport
     - Tar egne deler avhengig av hva man jobbet med av data
 
+
+
 ## Konflikthåndtering
 (Forslag)
 - I tilfellet hvor bare deler av gruppen er involvert trer den uavhengige delen inn som meklere.
@@ -32,7 +34,19 @@
 - Fare for depresjon
 ### Fysiske skader
 - Stor fysisk belastning
+- Materiell skade
+- Ved ferdsel i mørke skal refleksvest benyttes, eventuelt hodelykt/lommelykt dersom forholdene krever det
  
+## Plan
+Måle geografisk nord med geotheodolite som rettes mot polarstjernen, nattestid i (bymarka?)
+
+Måle magnetisk nord i etterkant av geografisk nord-målinger
+
+## Utstyr
+- Geotheodolite
+- Vinkelark?
+- Telefon
+
 # Innhold
 ## Prosjektplanen skal inneholde:
 - Medlemmene i gruppen, Maks 4 personer.
