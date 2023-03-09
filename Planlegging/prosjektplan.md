@@ -53,6 +53,8 @@ De som lager kart har kanskje funnet enda mer nøyaktig geografisk nord. Bruke g
 - Geotheodolite
 - Vinkelark?
 - Telefon
+- Tripod
+- Vatermål
 
 # Innhold
 ## Prosjektplanen skal inneholde:
