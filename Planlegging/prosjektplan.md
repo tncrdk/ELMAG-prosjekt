@@ -32,6 +32,7 @@
 - Fare for stress
 - Fare for søvnmangel
 - Fare for depresjon
+-Fare for død 
 ### Fysiske skader
 - Stor fysisk belastning
 - Materiell skade
