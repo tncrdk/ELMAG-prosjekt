@@ -51,7 +51,7 @@ Skjer samme dag som geografisk nord for å vite retning. Bruker en magnet til å
 De som lager kart har kanskje funnet enda mer nøyaktig geografisk nord. Bruke gyrosensor i mobilen til å finne inklinasjonen. Lodd med gradskive kan brukes til å måle vinkel lodrett. Da må det helst ikke blåse altfor mye. Tror kanskje telefonen klarer å måle magnetisk styrke i z selv uten at vi trenger å endre vinkelen. Må testes. Bruke en annen telefon til å filme den telefonen som måler magnetisk styrke. Slik at vi kan relatere vinkel med magnetisk felt. Når vi måler feltet må vi vente til feltet stabiliserer seg før vi tar målinger. 
 
 ## Utstyr
-- Geotheodolite
+- Gyrotheodolite
 - Vinkelark?
 - Telefon
 - Tripod
