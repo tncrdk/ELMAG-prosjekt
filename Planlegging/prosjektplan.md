@@ -65,7 +65,7 @@ alle målinger må skje på samme plass. Så nøyaktig posisjon.
 - Vinkelark?
 - Telefon
 - Tripod
-- Vatermål
+- Vater
 
 # Innhold
 ## Prosjektplanen skal inneholde:
@@ -97,3 +97,15 @@ bruke på de forskjellige målingene/oppgavene.
 
 # Phyphox
 https://phyphox.org/sensors/
+
+
+| **Dato for gjennomføring** | **Arbeidsoppgave**                  | **Arbeidsfordeling** | **Kommentarer** |
+|----------------------------|-------------------------------------|----------------------|-----------------|
+|                            | Få utstyr på plass (se utstyrslist) |                      |                 |
+|                            |                                     |                      |                 |
+|                            | Måling                              |                      |                 |
+|                            |                                     |                      |                 |
+|                            | Datanalyse                          |                      |                 |
+|                            |                                     |                      |                 |
+|                            | Rapportskriving                     |                      |                 |
+| 13. april (?)              | Innleveringsfrist                   |                      |                 |
