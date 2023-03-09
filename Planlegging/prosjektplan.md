@@ -44,9 +44,10 @@ Måle geografisk nord med geotheodolite som rettes mot polarstjernen, nattestid 
 Måle magnetisk nord i etterkant av geografisk nord-målinger
 
 ### Måling av geografisk nord
-Bruke en geotheodolite til følge posisjonen til polarstjernen. Plassen må være et sted hvor det ikke er mye lys, som for eksempel bymarka o.l.. Det skal også være et sted med liten forstyrrelse av andre ting som elektromagnetisk stråling. Posisjon, vær, og forhold blir grundig dokumentert. GPS-koordinater, klokkeslett? Fiksere et punkt på kartet; Geitfjellet? Ta bilde av nøyaktig oppsett og retning. Marker på kartet; nøyaktig nok? Sette opp theodolite som brukes til å notere posisjonen til polarstjernen med tidsintervall. Bruker dataene derfra til å regne sentrum av rotasjonsaksen. Orienter vinkelarket mot geografisk nord. Eventuelt basere seg på at kartverket har funnet geografisk før. Finner to punkter og finner nord ut fra dem og kartet.
+Bruke en geotheodolite til følge posisjonen til polarstjernen. Plassen må være et sted hvor det ikke er mye lys, som for eksempel bymarka o.l.. Det skal også være et sted med liten forstyrrelse av andre ting som elektromagnetisk stråling. Posisjon, vær, og forhold blir grundig dokumentert. GPS-koordinater, klokkeslett? Fiksere et punkt på kartet; Geitfjellet? Ta bilde av nøyaktig oppsett og retning. Marker på kartet; nøyaktig nok? Sette opp theodolite som brukes til å notere posisjonen til polarstjernen med tidsintervall. Bruker dataene derfra til å regne sentrum av rotasjonsaksen. Orienter vinkelarket mot geografisk nord. Eventuelt basere seg på at kartverket har funnet geografisk før. Finner to punkter og finner nord ut fra dem og kartet. Sammenligne nord på kartet og nord i virkeligheten. Vinkelen mellom referansen og nord skal være den samme på begge. 
 Måler på Lomtjønna i estenstadmarka. (63.381763, 10.476743)
-
+GPS målinger for som referanse kan også brukes.
+Tyholttårnet som referanse på GPS. Fotballbane på moholt som referanse på kart. Bruker begge til å finne nord.
 Bruke pendel til å felle normalen til horisonten. Sikter (kanskje laser) mot normalen.
 
 ### Måling av magnetisk nord
@@ -70,6 +71,7 @@ alle målinger må skje på samme plass. Så nøyaktig posisjon.
 - Vater
 - Plate til trefot
 - Liten magnet til å finne sensor (kjøkkenmagnet)
+- Laser
 
 # Innhold
 ## Prosjektplanen skal inneholde:
