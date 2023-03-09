@@ -61,7 +61,15 @@ alle målinger må skje på samme plass. Så nøyaktig posisjon.
 - Magnetisk nord med flere telefoner
     - Måler magnetfelt for flere ulike vinkler, sammenligner dem
 - Geograftisk nord
-- 
+
+### Fremgangsmåte
+- Måle vinkel mellom GPS-ref og Nord ved hjelp av GPS.
+- Måle vinkel mellom kart-ref og Nord ved hjelp av GPS og gradskive
+- Legge fysisk tau på fotballbanen som referanse til både kart-ref og GPS-ref
+- Kalibrer telefon med tanke på B-felt
+- Legge flat plattform for telefonen.
+- Mål B-felt i forhold til fysiske referanser; styrke og retning (vinkler). Måle vinkler uavhengige av hverandre slik at begge kan brukes som data.
+- Regn ut basert på data
 
 ## Utstyr
 - Gyrotheodolite
@@ -72,6 +80,7 @@ alle målinger må skje på samme plass. Så nøyaktig posisjon.
 - Plate til trefot
 - Liten magnet til å finne sensor (kjøkkenmagnet)
 - Laser
+- Tau
 
 # Innhold
 ## Prosjektplanen skal inneholde:
