@@ -47,6 +47,8 @@ Måle magnetisk nord i etterkant av geografisk nord-målinger
 Bruke en geotheodolite til følge posisjonen til polarstjernen. Plassen må være et sted hvor det ikke er mye lys, som for eksempel bymarka o.l.. Det skal også være et sted med liten forstyrrelse av andre ting som elektromagnetisk stråling. Posisjon, vær, og forhold blir grundig dokumentert. GPS-koordinater, klokkeslett? Fiksere et punkt på kartet; Geitfjellet? Ta bilde av nøyaktig oppsett og retning. Marker på kartet; nøyaktig nok? Sette opp theodolite som brukes til å notere posisjonen til polarstjernen med tidsintervall. Bruker dataene derfra til å regne sentrum av rotasjonsaksen. Orienter vinkelarket mot geografisk nord. Eventuelt basere seg på at kartverket har funnet geografisk før. Finner to punkter og finner nord ut fra dem og kartet.
 Måler på Lomtjønna i estenstadmarka. (63.381763, 10.476743)
 
+Bruke pendel til å felle normalen til horisonten. Sikter (kanskje laser) mot normalen.
+
 ### Måling av magnetisk nord
 Skjer samme dag som geografisk nord for å vite retning. Bruker en magnet til å finne ut hvor på telefonen magnetsensoren er nærmest? 
 De som lager kart har kanskje funnet enda mer nøyaktig geografisk nord. Bruke gyrosensor i mobilen til å finne inklinasjonen. Lodd med gradskive kan brukes til å måle vinkel lodrett. Da må det helst ikke blåse altfor mye. Tror kanskje telefonen klarer å måle magnetisk styrke i z selv uten at vi trenger å endre vinkelen. Må testes. Bruke en annen telefon til å filme den telefonen som måler magnetisk styrke. Slik at vi kan relatere vinkel med magnetisk felt. Når vi måler feltet må vi vente til feltet stabiliserer seg før vi tar målinger. 
@@ -66,6 +68,8 @@ alle målinger må skje på samme plass. Så nøyaktig posisjon.
 - Telefon
 - Tripod
 - Vater
+- Plate til trefot
+- Liten magnet til å finne sensor (kjøkkenmagnet)
 
 # Innhold
 ## Prosjektplanen skal inneholde:
