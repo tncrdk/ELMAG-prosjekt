@@ -120,7 +120,19 @@ https://phyphox.org/sensors/
 |                            |                                     |                      |                                  |
 | 14.03.2023:  14.16-14.50   | Måling                              |                      | Foretatt målinger fra gløshaugen |
 |                            |                                     |                      |                                  |
-|                            | Datanalyse                          |                      |                                  |
+|                            | Datanalyse                          |                      | Finne usikkerhet gjelder alle oppgavene       |
+|                            |                                     |                      |                                  |
+|  | 1. finne koordinater til ref.punkt + målelokasjon|                      |                                  |
+|  | 2. beregne vinkel mellom mobil koord.syst. og refpunkt   |                      |                                  |
+|  |                         |                               |                      |
+|  | 3. beregne vinkel mellom refpunkt og nord (bruke korrdinater fra 1.)  |                      |                                  |
+|  | 4. finne magnetisk inklinasjon |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
 |                            |                                     |                      |                                  |
 |                            | Rapportskriving                     |                      |                                  |
 | 13. april (?)              | Innleveringsfrist                   |                      |                                  |
+
+
+   
