@@ -114,13 +114,13 @@ bruke på de forskjellige målingene/oppgavene.
 https://phyphox.org/sensors/
 
 
-| **Dato for gjennomføring** | **Arbeidsoppgave**                  | **Arbeidsfordeling** | **Kommentarer** |
-| -------------------------- | ----------------------------------- | -------------------- | --------------- |
-|                            | Få utstyr på plass (se utstyrslist) |                      |                 |
-|                            |                                     |                      |                 |
-|                            | Måling                              |                      |                 |
-|                            |                                     |                      |                 |
-|                            | Datanalyse                          |                      |                 |
-|                            |                                     |                      |                 |
-|                            | Rapportskriving                     |                      |                 |
-| 13. april (?)              | Innleveringsfrist                   |                      |                 |
+| **Dato for gjennomføring** | **Arbeidsoppgave**                  | **Arbeidsfordeling** | **Kommentarer**                                        |
+| -------------------------- | ----------------------------------- | -------------------- | ------------------------------------------------------ |
+| 14.03.2023                 | Få utstyr på plass (se utstyrslist) |                      |                                                        |
+|                            |                                     |                      |                                                        |
+| 14.03.2023                 | Måling                              |                      | Foretatt målinger fra gløshaugen klokken 14.16 - 14.50 |
+|                            |                                     |                      |                                                        |
+|                            | Datanalyse                          |                      |                                                        |
+|                            |                                     |                      |                                                        |
+|                            | Rapportskriving                     |                      |                                                        |
+| 13. april (?)              | Innleveringsfrist                   |                      |                                                        |
