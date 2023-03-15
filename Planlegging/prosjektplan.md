@@ -132,6 +132,11 @@ https://phyphox.org/sensors/
 |                            |                                     |                      |                                  |
 |                            |                                     |                      |                                  |
 |                            | Rapportskriving                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
 | 13. april (?)              | Innleveringsfrist                   |                      |                                  |
 
 
