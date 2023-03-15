@@ -8,6 +8,12 @@ DATA_DIR = Path(__name__).parent / "Data"
 
 @dataclass
 class MagneticFieldData:
+    """
+    Klasse for å gruppere magnetisk-felt data
+    person_data: {person_navn => {måling => dataene}}
+    data_fields: [navn på datafeltet i dataene]
+    """
+
     person_data: dict[str, dict[str, np.ndarray]]
     data_fields: list[str]
 
