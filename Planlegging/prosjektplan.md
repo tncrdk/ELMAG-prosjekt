@@ -127,7 +127,7 @@ https://phyphox.org/sensors/
 |  |                         |                               |                      |
 |  | 3. beregne vinkel mellom refpunkt og nord (bruke korrdinater fra 1.)  |                      |                                  |
 |  | 4. finne magnetisk inklinasjon |                      |                                  |
-|                            |                                     |                      |                                  |
+|                            | 5. Lage vektorgrafikk for rapporten                                    |                      |                                  |
 |                            |                                     |                      |                                  |
 |                            |                                     |                      |                                  |
 |                            |                                     |                      |                                  |
