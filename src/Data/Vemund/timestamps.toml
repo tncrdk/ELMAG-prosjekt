@@ -1,0 +1,17 @@
+[Nidarosdomen]
+start = 80
+end = 120
+
+[Tyholt_1]
+start = 30
+end = 55
+
+[Tyholt_flymodus]
+start = 23
+end = 50
+
+[Tyholt_restart]
+start = 20
+end = 35
+
+[Location]

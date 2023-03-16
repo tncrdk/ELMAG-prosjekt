@@ -1,5 +1,13 @@
 [Nidarosdomen]
+start = 70
+end = 110
 
 [Tyholt_1]
+start = 50
+end = 90
 
 [Tyholt_restart]
+start = 27
+end = 50
+
+[Location]
