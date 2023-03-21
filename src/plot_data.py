@@ -23,7 +23,7 @@ def plot_one_to_one(
         xlabel (str): _description_
         ylabel (str): _description_
         title (str): _description_
-        file_name (str): _description_
+        file_path (Optional str): Hvis plottet skal lagres må en filsti legges ved
     """
     plt.plot(x_array, y_array, label=legend)
     plt.xlabel(xlabel)
@@ -51,7 +51,7 @@ def plot_one_to_many(
         xlabel (str): _description_
         ylabel (str): _description_
         title (str): _description_
-        filename (str): _description_
+        file_path (Optional str): Hvis plottet skal lagres må en filsti legges ved
     """
     for y_array, legend in zip(y_arrays, legends):
         plt.plot(x_array, y_array, label=legend)
@@ -80,7 +80,7 @@ def plot_many_to_many(
         xlabel (str): _description_
         ylabel (str): _description_
         title (str): _description_
-        filename (str): _description_
+        file_path (Optional str): Hvis plottet skal lagres må en filsti legges ved
     """
     for x_array, y_array, legend in zip(x_arrays, y_arrays, legends):
         plt.plot(x_array, y_array, label=legend)
