@@ -2,11 +2,11 @@ from __future__ import annotations
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
+from geopy import distance
 
 # earth semi- and major axis. se main.ipynb
-a = 6378137.0
-b = 6356752.314245
-
+a = distance.ELLIPSOIDS['WGS-84'][0]
+b = distance.ELLIPSOIDS['WGS-84'][1]
 
 def geocentric_radius(phi: float) -> float:
     """
@@ -25,25 +25,6 @@ def geocentric_radius(phi: float) -> float:
     radius = np.sqrt(numer/denom)
     return radius
 
-def distance(angle1: float, angle2: float, radius: float, absolute: bool = True) -> float:
-    """
-    Returns distance along earths surface along latitude or longitude  
-    
-    Parameters:
-    -----
-    angle1, angle2: float. angles
-    radius: float. Earths geocentric radius (see geocentric_radius)
-    
-    Returns:
-    -----
-    dist: float. distance along earths surface
-    """
-    if absolute:
-        dist = abs(radius*(angle2-angle1))
-    else:
-        dist = radius*(angle2-angle1)
-    return dist
-
 def angle_north(d_phi, d_theta) -> float:
     alpha = np.arctan(d_theta/d_phi)
     return alpha
@@ -52,3 +33,7 @@ def angle_north(d_phi, d_theta) -> float:
 def convert_to_rad(coord: list) -> None:
     for i in range(len(coord)):
         coord[i] = np.radians(coord[i])
+
+
+def distance_geopy(p1, p2):
+    return distance.geodesic(p1, p2, ellipsoid='WGS-84').m
