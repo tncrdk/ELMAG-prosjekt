@@ -2,8 +2,42 @@ from __future__ import annotations
 import numpy as np
 from pathlib import Path
 from dataclasses import dataclass
+import tomllib
 
 DATA_DIR = Path(__name__).parent / "Data"
+
+
+"""
+[Objekt]
+datafields
+data
+
+[Object.data]
+person
+
+[Object.data.Person]
+måling
+
+[Object.data.person.måling]
+data
+timestamp 
+indexstamp
+"""
+
+
+@dataclass
+class RawDataObject:
+    """
+    Inneholder data
+
+    data: np.ndarray
+    timestamps: tuple[float, float]
+    indexstamps: tuple[int, int]
+    """
+
+    data: np.ndarray
+    timestamps: tuple[float, float]
+    indexstamps: tuple[int, int]
 
 
 @dataclass
@@ -12,13 +46,13 @@ class MagneticFieldData:
     Klasse for å håndtere magnetfelt-dataene.
 
     magnetic_field_data:
-    { person_navn => { måling => data: np.ndarray } }
+    { person_navn => { måling => dataObject } }
 
     data_fields:
     [ navn på datafeltene i dataene i rekkefølgen til kolonnene til dataene ]
     """
 
-    data: dict[str, dict[str, np.ndarray]]
+    data: dict[str, dict[str, RawDataObject]]
     data_fields: list[str]
 
 
@@ -34,7 +68,7 @@ class LocationData:
     [ navn på datafeltene i dataene i rekkefølgen til kolonnene til dataene ]
     """
 
-    data: dict[str, np.ndarray]
+    data: dict[str, RawDataObject]
     data_fields: list[str]
 
 
@@ -47,15 +81,18 @@ def load_magnetic_field_data() -> MagneticFieldData:
     magnetic_field_data_dict = {}
     for person_dir in DATA_DIR.iterdir():
         person_data_files = person_dir.rglob("*[!Location]*/Raw Data.csv")
+        timestamps_file, _ = person_dir.glob("timestamps.toml")
+        timestamps: dict[str, dict[str, str]] = tomllib.load(timestamps_file.open("b"))
         person_data_dict = {}
-        for file in person_data_files:
+
+        for measurement_file in person_data_files:
             data = np.loadtxt(
-                file,
+                measurement_file,
                 skiprows=1,
                 delimiter=",",
                 unpack=True,
             )
-            person_data_dict[file.parent.name] = data
+            person_data_dict[measurement_file.parent.name] = data
 
         magnetic_field_data_dict[person_dir.name] = person_data_dict
 
