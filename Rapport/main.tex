@@ -13,7 +13,7 @@
 \usepackage{amsmath,amssymb} 				  % Ekstra matematikkfunksjoner
 \usepackage[font=small,labelfont=bf]{caption} % For justering av figurtekst og tabelltekst
 \usepackage{hyperref}                         % For å skrive klikkbare linker
-\usepackage{minted}
+% \usepackage{minted}
 
 % Vi kan også definere egne funksjoner
 \newcommand{\enhet}[1]{~\mathrm{#1}}  % Kommando for å enklere typesette enheter
@@ -40,6 +40,8 @@
 Ulike sylindre som ruller rent i bunnen av en sirkelformet bane opplever ulike dempekrefter.
 I dette forsøket ønskes det å analysere et slikt system med hjelp av videoanalyse og numeriske løsninger av den aktuelle differensial\-ligningen. I løsningen av differensial-ligningene ble både Crank-Nicholson-metoden og Euler-metoden ble forsøkt brukt, hvorpå Crank-Nicholson-metoden gav en bedre tilnærming til de eksperimentelle dataene enn Eulers-metode. Det ble dernest observert, basert på de numeriske modellene, at luftmotstanden og den forenklede motstanden fra en del andre fysiske prosesser var særdeles dominerende i forhold til rullefriksjonen.
 
+
+Dette er bare ull
 \end{abstract}
 
 \maketitle % Denne kommanoden skriver ut dokumentinformasjonen, overskrift og sammendrag.
@@ -140,7 +142,7 @@ Da Eulers metode ofte fører til systematisk avvik er det bedre å bruke Crank-N
 
 \begin{figure}[h] 
     \begin{center}
-        \includegraphics[width=0.4\textwidth]{drawing2}
+        \includegraphics[width=0.4\textwidth]{img/drawing2}
     \end{center}
     \caption{Skisse av system.}
     \label{Fig System}
@@ -148,7 +150,7 @@ Da Eulers metode ofte fører til systematisk avvik er det bedre å bruke Crank-N
 
 \begin{figure}[h] 
     \begin{center}
-        \includegraphics[width=0.4\textwidth]{skisse}
+        \includegraphics[width=0.4\textwidth]{img/skisse}
     \end{center}
     \caption{Skisse av oppsett.}
     \label{Fig Oppsett}
@@ -200,8 +202,8 @@ I tillegg til analyse av de eksperimentelle dataene blir også problemet løst b
 
 \begin{figure}[p] 
 	\begin{center}
-        	\includegraphics[width=0.45\textwidth]{Plots/Saved-Plots/combined-analytic/massiv_metall-step_euler.png}
-        	\includegraphics[width=0.45\textwidth]{Plots/Saved-Plots/step_euler-2b-small_dt/massiv_metall-step_euler-plot.png}
+        	\includegraphics[width=0.45\textwidth]{img/massiv_metall-step_euler.png}
+        	\includegraphics[width=0.45\textwidth]{img/massiv_metall-step_euler-plot.png}
         \end{center}
 	\caption{Bruk av Eulers metode. Henholdsvis \(\Delta t = 0.01\) og \(\Delta t = 10^{-6}\).}
 	\label{Fig step-Euler} % Som med ligningen, er dette navnet vi refererer til.
@@ -209,7 +211,7 @@ I tillegg til analyse av de eksperimentelle dataene blir også problemet løst b
 
 \begin{figure}[p] 
 	\begin{center}
-		\includegraphics[width=0.45\textwidth]{Plots/Saved-Plots/combined-analytic/massiv_metall-stepCN.png}
+		\includegraphics[width=0.45\textwidth]{img/massiv_metall-stepCN.png}
   
  \end{center}
 	\caption{CN-metoden og den analytiske løsningen med \(\delta = 0.04\) og \(\beta \text{ og } \phi_R = 0\). Disse sammenfaller fullstendig.}
@@ -218,8 +220,8 @@ I tillegg til analyse av de eksperimentelle dataene blir også problemet løst b
 
 \begin{figure}[p] 
 	\begin{center}
-            \includegraphics[width=0.45\textwidth]{Plots/Saved-Plots/Justert/Massiv metall/massiv_metall-stepCN.png}
-		\includegraphics[width=0.45\textwidth]{Plots/Saved-Plots/Justert/Massiv plast/massiv_plast-stepCN copy.png}
+            \includegraphics[width=0.45\textwidth]{img/massiv_metall-stepCN.png}
+		\includegraphics[width=0.45\textwidth]{img/massiv_plast-stepCN copy.png}
  \end{center}
 	\caption{Justering av \(\phi_R\), \(\beta\) og \(\delta\) hos helholdsvis massiv metall og massiv plast.}
 	\label{Fig tweaking} % Som med ligningen, er dette navnet vi refererer til.
@@ -227,7 +229,7 @@ I tillegg til analyse av de eksperimentelle dataene blir også problemet løst b
 
 \begin{figure}[p] 
 	\begin{center}
-            \includegraphics[width=0.45\textwidth]{Plots/comparison_d_b_r.png}
+            \includegraphics[width=0.45\textwidth]{img/comparison_d_b_r.png}
     \end{center}
 	\caption{Sammenligning av påvirkning til \(\phi_R\), \(\beta\) og \(\delta\) som funksjon av \(\dot{\phi}\). Ser på tidspunkt med maksimal rullemotstand når \(\phi = 0\). Det er bare rullefriksjonsleddet som avhenger av \(\phi\) (se \eqref{ODE}).}
 	\label{Fig comparison} % Som med ligningen, er dette navnet vi refererer til.
