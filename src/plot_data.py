@@ -97,4 +97,4 @@ def save_or_show_plot(filepath: str | None):
         plt.savefig(save_path)
     else:
         plt.show()
-    plt.cla()
+    plt.close()
