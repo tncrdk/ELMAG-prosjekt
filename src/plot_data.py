@@ -95,6 +95,8 @@ def save_or_show_plot(filepath: str | None):
     if filepath:
         save_path = FOLDER_PATH / f"{filepath}.svg"
         plt.savefig(save_path)
+        save_path = FOLDER_PATH / f"{filepath}.png"
+        plt.savefig(save_path)
     else:
         plt.show()
     plt.close()
