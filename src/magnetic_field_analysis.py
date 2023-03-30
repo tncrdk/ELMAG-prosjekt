@@ -51,6 +51,17 @@ def get_magnetic_field_reference_angles(measurement: str) -> dict[str, np.ndarra
 
 
 def get_inclination(measurement: str) -> dict[str, np.ndarray]:
+    """_summary_
+
+    Args:
+        measurement (str): Hvilken måling ser du på
+
+    Raises:
+        ValueError: _description_
+
+    Returns:
+        dict[str, np.ndarray]: _description_
+    """
     person_inclination_dict = {}
     location_data_obj = load_data.load_magnetic_field_data()
     for person, data_dict in location_data_obj.data.items():

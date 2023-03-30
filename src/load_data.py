@@ -9,18 +9,13 @@ DATA_DIR = Path(__name__).parent / "Data"
 
 
 @dataclass
-class PERSON:
+class Person:
     thorbjorn = "Thorb"
     oskar = "Oskar"
     vemund = "Vemund"
 
 
-@dataclass
-class MEASUREMENT:
-    nidarosdomen = "Nidarosdomen"
-    tyholt = "Tyholt"
-    tyholt_flymodus = "Tyholt_flymodus"
-    tyholt_restart = "Tyholt_restart"
+MEASUREMENTS = ["Nidarosdomen", "Tyholt", "Tyholt_restart", "Tyholt_flymodus"]
 
 
 @dataclass
