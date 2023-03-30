@@ -26,15 +26,13 @@
 ## Risikovurdering
 ### Psykiske skader
 (forslag)
-- Fare for emosjonelle skader
 - Fare for utbrenning
 - Fare for tidspress
 - Fare for stress
 - Fare for søvnmangel
-- Fare for depresjon
--Fare for død 
+
 ### Fysiske skader
-- Stor fysisk belastning
+- fysisk belastning ved bæring av tripod
 - Materiell skade
 - Ved ferdsel i mørke skal refleksvest benyttes, eventuelt hodelykt/lommelykt dersom forholdene krever det
  
