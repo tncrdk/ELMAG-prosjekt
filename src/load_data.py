@@ -9,18 +9,13 @@ DATA_DIR = Path(__name__).parent / "Data"
 
 
 @dataclass
-class PERSON:
+class Person:
     thorbjorn = "Thorb"
     oskar = "Oskar"
     vemund = "Vemund"
 
 
-@dataclass
-class MEASUREMENT:
-    nidarosdomen = "Nidarosdomen"
-    tyholt = "Tyholt"
-    tyholt_flymodus = "Tyholt_flymodus"
-    tyholt_restart = "Tyholt_restart"
+MEASUREMENTS = ["Nidarosdomen", "Tyholt", "Tyholt_restart", "Tyholt_flymodus"]
 
 
 @dataclass
@@ -125,9 +120,6 @@ def load_magnetic_field_data() -> MagneticFieldData:
 
 def load_location_data() -> LocationData:
     """Laster inn lokasjonsdataene i person-mappen som blir gitt som argument.
-
-    Args:
-        person_directory (Path): _description_
 
     Returns:
         np.ndarray: Et array med dataene i lokasjonsmappen
