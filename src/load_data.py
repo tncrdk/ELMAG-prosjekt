@@ -15,7 +15,20 @@ class Person:
     vemund = "Vemund"
 
 
-MEASUREMENTS = ["Nidarosdomen", "Tyholt", "Tyholt_restart", "Tyholt_flymodus"]
+@dataclass
+class Measurement:
+    nidarosdomen = "Nidarosdomen"
+    tyholt = "Tyholt"
+    tyholt_restart = "Tyholt_restart"
+    tyholt_flymodus = "Tyholt_flymodus"
+
+
+MEASUREMENTS = [
+    Measurement.nidarosdomen,
+    Measurement.tyholt,
+    Measurement.tyholt_restart,
+    Measurement.tyholt_flymodus,
+]
 
 
 @dataclass
