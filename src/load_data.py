@@ -126,9 +126,6 @@ def load_magnetic_field_data() -> MagneticFieldData:
 def load_location_data() -> LocationData:
     """Laster inn lokasjonsdataene i person-mappen som blir gitt som argument.
 
-    Args:
-        person_directory (Path): _description_
-
     Returns:
         np.ndarray: Et array med dataene i lokasjonsmappen
     """
