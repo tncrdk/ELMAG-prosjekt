@@ -63,15 +63,14 @@ alle målinger må skje på samme plass. Så nøyaktig posisjon.
 ### Fremgangsmåte
 - Måle vinkel mellom GPS-ref og Nord ved hjelp av GPS.
 - Måle vinkel mellom kart-ref og Nord ved hjelp av GPS og gradskive
-- Legge fysisk tau på fotballbanen som referanse til både kart-ref og GPS-ref
+- Sikte fra høgskoleparken mot tyholttårnet og nidarosdomen
 - Kalibrer telefon med tanke på B-felt
 - Legge flat plattform for telefonen.
 - Mål B-felt i forhold til fysiske referanser; styrke og retning (vinkler). Måle vinkler uavhengige av hverandre slik at begge kan brukes som data.
+- Én person dokumenterer
 - Regn ut basert på data
 
 ## Utstyr
-- Gyrotheodolite
-- Vinkelark?
 - Telefon
 - Tripod
 - Vater
@@ -79,6 +78,7 @@ alle målinger må skje på samme plass. Så nøyaktig posisjon.
 - Liten magnet til å finne sensor (kjøkkenmagnet)
 - Laser
 - Tau
+- Vinkelmåler (pendel)
 
 # Innhold
 ## Prosjektplanen skal inneholde:
@@ -112,13 +112,30 @@ bruke på de forskjellige målingene/oppgavene.
 https://phyphox.org/sensors/
 
 
-| **Dato for gjennomføring** | **Arbeidsoppgave**                  | **Arbeidsfordeling** | **Kommentarer** |
-| -------------------------- | ----------------------------------- | -------------------- | --------------- |
-|                            | Få utstyr på plass (se utstyrslist) |                      |                 |
-|                            |                                     |                      |                 |
-|                            | Måling                              |                      |                 |
-|                            |                                     |                      |                 |
-|                            | Datanalyse                          |                      |                 |
-|                            |                                     |                      |                 |
-|                            | Rapportskriving                     |                      |                 |
-| 13. april (?)              | Innleveringsfrist                   |                      |                 |
+| **Dato for gjennomføring** | **Arbeidsoppgave**                  | **Arbeidsfordeling** | **Kommentarer**                  |
+| -------------------------- | ----------------------------------- | -------------------- | -------------------------------- |
+| 14.03.2023                 | Få utstyr på plass (se utstyrslist) |                      |                                  |
+|                            |                                     |                      |                                  |
+| 14.03.2023:  14.16-14.50   | Måling                              |                      | Foretatt målinger fra gløshaugen |
+|                            |                                     |                      |                                  |
+|                            | Datanalyse                          |                      | Finne usikkerhet gjelder alle oppgavene       |
+|                            |                                     |                      |                                  |
+|  | 1. finne koordinater til ref.punkt + målelokasjon|                      |                                  |
+|  | 2. beregne vinkel mellom mobil koord.syst. og refpunkt   |                      |                                  |
+|  |                         |                               |                      |
+|  | 3. beregne vinkel mellom refpunkt og nord (bruke korrdinater fra 1.)  |                      |                                  |
+|  | 4. finne magnetisk inklinasjon |                      |                                  |
+|                            | 5. Lage vektorgrafikk for rapporten                                    |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            | Rapportskriving                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+|                            |                                     |                      |                                  |
+| 13. april (?)              | Innleveringsfrist                   |                      |                                  |
+
+
+   

@@ -15,4 +15,7 @@ _minted-main/
 .env/
 
 # Garbage files
-__pychache__/
+__pycache__/
+
+# vscode settings
+.vscode/

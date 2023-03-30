@@ -1,0 +1,26 @@
+\ProvidesPackage{packages}
+
+
+% Vi laster inn en del pakker i starten av dokumentet som inneholder kommandoer og miløer vi vil få bruk for.
+\usepackage[utf8]{inputenc}                   % Mulighet til å skrive utf8-symboler
+\usepackage[norsk]{babel}				      % Tilpasning til norsk
+\usepackage{graphicx}       				  % For å inkludere figurer
+\usepackage{amsmath,amssymb} 				  % Ekstra matematikkfunksjoner
+\usepackage[font=small,labelfont=bf]{caption} % For justering av figurtekst og tabelltekst
+\usepackage{hyperref}                         % For å skrive klikkbare linker
+\usepackage{import}
+\usepackage{authblk}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+% \usepackage{minted}
+
+
+% Vi kan også definere egne funksjoner
+\newcommand{\enhet}[1]{~\mathrm{#1}}  % Kommando for å enklere typesette enheter
+\newcommand{\dd}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}} % i stedet for \frac{d}{d} 
+\newcommand{\diff}[1]{\mathrm{d}{#1}}
+
+
+% Gjør noen fornorskinger (vanligvis holder et med pakken "babel", men Elsarticle ødelegger)
+% Endrer fra "Preprint submitted to" til "Preprint forelagt"
+%\usepackage{etoolbox}
+ %\makeatletter\patchcmd{\ps@pprintTitle}{Preprint submitted to}{Preprint forelagt}{}{}\makeatother
