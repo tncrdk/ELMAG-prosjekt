@@ -57,10 +57,10 @@ def get_inclination(measurement: str) -> dict[str, np.ndarray]:
         measurement (str): Hvilken måling ser du på
 
     Raises:
-        ValueError: _description_
+        ValueError: Dersom målingen ikke eksisterer
 
     Returns:
-        dict[str, np.ndarray]: _description_
+        dict[str, np.ndarray]: { person => [tid_array, inklinasjon_array] }
     """
     person_inclination_dict = {}
     location_data_obj = load_data.load_magnetic_field_data()

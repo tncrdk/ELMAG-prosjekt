@@ -2,7 +2,6 @@ from __future__ import annotations
 import numpy as np
 from pathlib import Path
 from dataclasses import dataclass
-from enum import Enum
 import tomllib
 
 DATA_DIR = Path(__name__).parent / "Data"
