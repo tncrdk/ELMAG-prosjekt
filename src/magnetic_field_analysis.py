@@ -1,5 +1,8 @@
 from __future__ import annotations
 import numpy as np
+from scipy.stats import tstd
+import tomli_w
+from pathlib import Path
 import load_data
 
 
@@ -21,14 +24,14 @@ def calculate_inclination(
     # men inklinasjonen er oppgitt som positiv
 
 
-def get_magnetic_field_reference_angles(measurement: str) -> dict[str, np.ndarray]:
+def get_magnetic_field_reference_angles_dict(measurement: str) -> dict[str, np.ndarray]:
     """_summary_
 
     Args:
         measurement (str): hvilken måling en ser på
 
     Raises:
-        ValueError: measurement gitt inn finnes ikke
+        ValueError: målingen tatt inn som argument finnes ikke
 
     Returns:
         dict[str, np.ndarray]: { person => [tid_array, vinkel_array] }
@@ -50,8 +53,8 @@ def get_magnetic_field_reference_angles(measurement: str) -> dict[str, np.ndarra
     return person_angle_dict
 
 
-def get_inclination(measurement: str) -> dict[str, np.ndarray]:
-    """_summary_
+def get_inclination_dict(measurement: str) -> dict[str, np.ndarray]:
+    """Henter ut alle resultatene fra en bestemt måling
 
     Args:
         measurement (str): Hvilken måling ser du på
@@ -76,3 +79,44 @@ def get_inclination(measurement: str) -> dict[str, np.ndarray]:
     if len(person_inclination_dict.keys()) == 0:
         raise ValueError(f"Ingen målinger med dette navnet: {measurement}")
     return person_inclination_dict
+
+
+def analyze_results(
+    results_dict: dict[str, np.ndarray],
+    measurement_type: str,
+    measurement_name: str,
+    save: bool = True,
+) -> dict[str, dict[str, float]]:
+    """utfører en analyse av alle dataene for en gitt måling
+
+    Args:
+        inclination_dict (dict[str, np.ndarray]): { person => resultater_array } (Alt gjelder for én bestemt måling)
+        measurement_type: Inklinasjon eller deklinasjon
+        measurement (str): Navn på målingen
+        save_results (bool, optional): Hvorvidt man skal lagre resultatene i en fil. Defaults to True.
+
+    Returns:
+        dict[str, dict[str, float]]: { person => { mål (avg, stdev, o.l.) => resultat } } (For en gitt måling)
+    """
+    if not (measurement_type == "Inklinasjon" or measurement_type == "Deklinasjon"):
+        raise ValueError(
+            f"Measurement_type skal enten være 'Deklinasjon' eller 'Inklinasjon', ikke: {measurement_type}"
+        )
+    results: dict[str, dict[str, float]] = {}
+    for person, results_array in results_dict.items():
+        angles_array = results_array[1]
+        person_result = {
+            "avg": np.mean(angles_array),
+            "median": np.median(angles_array),
+            "stdev": tstd(angles_array),
+        }
+        results[person] = person_result
+    if save:
+        save_results(results, Path(measurement_type) / f"{measurement_name}.toml")
+    return results
+
+
+def save_results(results: dict, filepath: Path) -> None:
+    RESULTS_DIR = Path(__name__).parent / "Results"
+    with open(RESULTS_DIR / filepath, "wb") as f:
+        tomli_w.dump(results, f)
