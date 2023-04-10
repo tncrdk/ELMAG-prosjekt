@@ -24,6 +24,12 @@ def calculate_inclination(
     # men inklinasjonen er oppgitt som positiv
 
 
+def calculate_declination(
+    field_reference_angles: np.ndarray, north_reference_angle: float
+) -> np.ndarray:
+    return field_reference_angles - north_reference_angle
+
+
 def get_magnetic_field_reference_angles_dict(measurement: str) -> dict[str, np.ndarray]:
     """_summary_
 
@@ -42,8 +48,8 @@ def get_magnetic_field_reference_angles_dict(measurement: str) -> dict[str, np.n
         rawdata_obj = data_dict.get(measurement)
         if rawdata_obj == None:
             continue
-        start, slutt = rawdata_obj.indexstamps
-        rawdata = rawdata_obj.data[:, start:slutt]
+        start, end = rawdata_obj.indexstamps
+        rawdata = rawdata_obj.data[:, start:end]
         angles_array = calculate_magnetic_field_reference_angle(rawdata[1], rawdata[2])
         time = rawdata[0]
         person_angle_dict[person] = np.vstack((time, angles_array))
@@ -71,8 +77,8 @@ def get_inclination_dict(measurement: str) -> dict[str, np.ndarray]:
         rawdata_obj = data_dict.get(measurement)
         if rawdata_obj == None:
             continue
-        start, slutt = rawdata_obj.indexstamps
-        data = rawdata_obj.data[:, start:slutt]
+        start, end = rawdata_obj.indexstamps
+        data = rawdata_obj.data[:, start:end]
         inclination = calculate_inclination(data[1], data[2], data[3])
         person_inclination_dict[person] = np.vstack((data[0], inclination))
 
@@ -92,13 +98,13 @@ def analyze_results(
     Args:
         inclination_dict (dict[str, np.ndarray]): { person => resultater_array } (Alt gjelder for én bestemt måling)
         measurement_type: Inklinasjon eller deklinasjon
-        measurement (str): Navn på målingen
+        measurement_name (str): Navn på målingen
         save_results (bool, optional): Hvorvidt man skal lagre resultatene i en fil. Defaults to True.
 
     Returns:
         dict[str, dict[str, float]]: { person => { mål (avg, stdev, o.l.) => resultat } } (For en gitt måling)
     """
-    if not (measurement_type == "Inklinasjon" or measurement_type == "Deklinasjon"):
+    if not (measurement_type == "Inclination" or measurement_type == "Declination"):
         raise ValueError(
             f"Measurement_type skal enten være 'Deklinasjon' eller 'Inklinasjon', ikke: {measurement_type}"
         )
@@ -112,11 +118,7 @@ def analyze_results(
         }
         results[person] = person_result
     if save:
-        save_results(results, Path(measurement_type) / f"{measurement_name}.toml")
+        load_data.save_results(
+            results, Path(measurement_type) / f"{measurement_name}.toml"
+        )
     return results
-
-
-def save_results(results: dict, filepath: Path) -> None:
-    RESULTS_DIR = Path(__name__).parent / "Results"
-    with open(RESULTS_DIR / filepath, "wb") as f:
-        tomli_w.dump(results, f)

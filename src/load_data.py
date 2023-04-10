@@ -3,6 +3,7 @@ import numpy as np
 from pathlib import Path
 from dataclasses import dataclass
 import tomllib
+import tomli_w
 
 DATA_DIR = Path(__name__).parent / "Data"
 
@@ -12,6 +13,9 @@ class Person:
     thorbjorn = "Thorb"
     oskar = "Oskar"
     vemund = "Vemund"
+
+
+PERSONS = [Person.oskar, Person.thorbjorn, Person.vemund]
 
 
 @dataclass
@@ -66,8 +70,8 @@ class LocationData:
     """
     Klasse for å håndtere lokasjonsdataene
 
-    location_data:
-    { person_navn => data: RawDataObject }
+    data:
+    { person_navn => RawDataObject }
 
     data_fields:
     [ navn på datafeltene i dataene i rekkefølgen til kolonnene til dataene ]
@@ -80,9 +84,9 @@ class LocationData:
 def get_index_stamps(
     time_array: np.ndarray, timestamps: tuple[float, float]
 ) -> tuple[int, int]:
-    delta_t = time_array[1] - time_array[0]
-    index_0 = int(timestamps[0] / delta_t)
-    index_1 = int(timestamps[1] / delta_t)
+    delta_t = time_array[11] - time_array[10]
+    index_0 = int((timestamps[0] - time_array[1]) / delta_t)
+    index_1 = int((timestamps[1] - time_array[1]) / delta_t)
     return (index_0, index_1)
 
 
@@ -170,3 +174,9 @@ def load_location_data() -> LocationData:
         "Vertical Accuracy (m)",
     ]
     return LocationData(location_data_dict, data_fields)
+
+
+def save_results(results: dict, filepath: Path) -> None:
+    RESULTS_DIR = Path(__name__).parent / "Results"
+    with open(RESULTS_DIR / filepath, "wb") as f:
+        tomli_w.dump(results, f)
