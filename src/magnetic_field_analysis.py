@@ -12,7 +12,7 @@ import load_data
 def calculate_magnetic_field_reference_angle(
     B_x_array: np.ndarray, B_y_array: np.ndarray
 ) -> np.ndarray:
-    return np.rad2deg(np.pi - np.arctan2(B_y_array, B_x_array))
+    return np.rad2deg(np.pi - np.arctan2(B_y_array, B_x_array) )
 
 
 def calculate_inclination(
@@ -27,7 +27,7 @@ def calculate_inclination(
 def calculate_declination(
     field_reference_angles: np.ndarray, north_reference_angle: float
 ) -> np.ndarray:
-    return field_reference_angles - north_reference_angle
+    return north_reference_angle - field_reference_angles
 
 
 def get_magnetic_field_reference_angles_dict(measurement: str) -> dict[str, np.ndarray]:
