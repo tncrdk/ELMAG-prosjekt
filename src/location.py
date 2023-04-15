@@ -28,34 +28,39 @@ def distance_geopy(p1, p2):
     return distance.geodesic(p1, p2, ellipsoid="WGS-84").m
 
 def calculate_angle_north():
+    '''
+    Returns: dict med filnavn som key og dict med verdier for vinkler (grad) som values.
+    e.g.: {'navn_location.toml': {'nidaros': 25, 'tyholt': 80}}
+    '''
     loc_data = {}
     for pth in DIR_PATH_RESULTS_LOCATION.iterdir():
         with open(pth, 'rb') as f:
             loc_data[pth.name] = tomllib.load(f)
 
+    north_referance_angle_dict = {}
     for key, item in loc_data.items():
         coord_maalepunkt = (item['Latitude (deg)']['avg'], item['Longitude (deg)']['avg'])
     
         # tre punkter i rettvinklet trekant. arctan gir vinkel.
         # NIDAROS
+        fortegn = np.sign(coord_maalepunkt[1] - coord_nidaros[1])
         rettvinklet_nidaros = (coord_nidaros[0], coord_maalepunkt[1])
         katet_nidaros_1 = distance_geopy(rettvinklet_nidaros, coord_maalepunkt)
         katet_nidaros_2 = distance_geopy(rettvinklet_nidaros, coord_nidaros)
-        
-        angle_nidaros = np.degrees(np.arctan2(katet_nidaros_2, katet_nidaros_1))
+
+        angle_nidaros = fortegn*np.degrees(np.arctan2(katet_nidaros_2, katet_nidaros_1))
 
         #TYHOLT
+        fortegn = np.sign(coord_maalepunkt[1] - coord_tyholt[1])
         rettvinklet_tyholt = (coord_tyholt[0], coord_maalepunkt[1])
 
         katet_tyholt_1 = distance_geopy(rettvinklet_tyholt, coord_maalepunkt)
         katet_tyholt_2 = distance_geopy(rettvinklet_tyholt, coord_tyholt)
 
-        angle_tyholt = np.degrees(np.arctan2(katet_tyholt_2, katet_tyholt_1))
+        angle_tyholt = fortegn*np.degrees(np.arctan2(katet_tyholt_2, katet_tyholt_1))
 
-        print(key)
-        print(f'{angle_nidaros=:.2f} deg')
-        print(f'{angle_tyholt=:.2f} deg')
-        print()
+        north_referance_angle_dict[key] = {'nidaros': angle_nidaros, 'tyholt': angle_tyholt}
+    return north_referance_angle_dict
 
 
 def get_location(person: str) -> dict[str, dict[str, float]]:
