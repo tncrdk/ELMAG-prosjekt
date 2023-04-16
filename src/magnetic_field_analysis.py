@@ -12,7 +12,16 @@ import load_data
 def calculate_magnetic_field_reference_angle(
     B_x_array: np.ndarray, B_y_array: np.ndarray
 ) -> np.ndarray:
-    return np.rad2deg(np.pi - np.arctan2(B_y_array, B_x_array) )
+    """Beregner vinkelen mellom magnetfeltet og referansepunktet (langs negativ x-akse)
+
+    Args:
+        B_x_array (np.ndarray): Feltet i x-retning
+        B_y_array (np.ndarray): Feltet i y-retning
+
+    Returns:
+        np.ndarray: vinkel_array (grader)
+    """
+    return np.rad2deg(np.pi - np.arctan2(B_y_array, B_x_array))
 
 
 def calculate_inclination(
@@ -27,7 +36,16 @@ def calculate_inclination(
 def calculate_declination(
     field_reference_angles: np.ndarray, north_reference_angle: float
 ) -> np.ndarray:
-    return north_reference_angle - field_reference_angles
+    """Kalkulerer deklinasjonen
+
+    Args:
+        field_reference_angles (np.ndarray): vinkel_array (grader) mellom magnetfelt og referansepunkt
+        north_reference_angle (float): vinkel_array (grader) mellom geografisk nord og referansepunkt
+
+    Returns:
+        np.ndarray: deklinasjon_array (grader)
+    """
+    return field_reference_angles - north_reference_angle
 
 
 def get_magnetic_field_reference_angles_dict(measurement: str) -> dict[str, np.ndarray]:

@@ -5,11 +5,13 @@ import load_data
 from dataclasses import dataclass
 from scipy.stats import tstd
 from pathlib import Path
+import tomllib
 
-# earth semi- and major axis. se main.ipynb
-a = distance.ELLIPSOIDS["WGS-84"][0]
-b = distance.ELLIPSOIDS["WGS-84"][1]
+DIR_PATH_RESULTS_LOCATION = Path(__name__).parent / "Results" / "Location"
 
+# Fra google maps:
+coord_nidaros = (63.42690834516923, 10.396940527455543)
+coord_tyholt = (63.422364810418905, 10.431957717382154)
 
 @dataclass
 class Location:
@@ -18,36 +20,47 @@ class Location:
     latitude: dict[str, float]
 
 
-def geocentric_radius(phi: float) -> float:
-    """
-    Returns geocentric radius given geodetic latitude.
-
-    Parameters:
-    -----
-    phi: float. geodetic latitude
-
-    Returns:
-    -----
-    radius: float. Geocentric radius
-    """
-    numer = (a**2 * np.cos(phi)) ** 2 + (b**2 * np.sin(phi)) ** 2
-    denom = (a * np.cos(phi)) ** 2 + (b * np.sin(phi)) ** 2
-    radius = np.sqrt(numer / denom)
-    return radius
-
-
-def angle_north(d_phi, d_theta) -> float:
-    alpha = np.arctan(d_theta / d_phi)
-    return alpha
-
-
 def convert_to_rad(coord: list) -> None:
     for i in range(len(coord)):
         coord[i] = np.radians(coord[i])
 
-
 def distance_geopy(p1, p2):
     return distance.geodesic(p1, p2, ellipsoid="WGS-84").m
+
+def calculate_angle_north():
+    '''
+    Returns: dict med filnavn som key og dict med verdier for vinkler (grad) som values.
+    e.g.: {'navn_location.toml': {'nidaros': 25, 'tyholt': 80}}
+    '''
+    loc_data = {}
+    for pth in DIR_PATH_RESULTS_LOCATION.iterdir():
+        with open(pth, 'rb') as f:
+            loc_data[pth.name] = tomllib.load(f)
+
+    north_referance_angle_dict = {}
+    for key, item in loc_data.items():
+        coord_maalepunkt = (item['Latitude (deg)']['avg'], item['Longitude (deg)']['avg'])
+    
+        # tre punkter i rettvinklet trekant. arctan gir vinkel.
+        # NIDAROS
+        fortegn = np.sign(coord_maalepunkt[1] - coord_nidaros[1])
+        rettvinklet_nidaros = (coord_nidaros[0], coord_maalepunkt[1])
+        katet_nidaros_1 = distance_geopy(rettvinklet_nidaros, coord_maalepunkt)
+        katet_nidaros_2 = distance_geopy(rettvinklet_nidaros, coord_nidaros)
+
+        angle_nidaros = fortegn*np.degrees(np.arctan2(katet_nidaros_2, katet_nidaros_1))
+
+        #TYHOLT
+        fortegn = np.sign(coord_maalepunkt[1] - coord_tyholt[1])
+        rettvinklet_tyholt = (coord_tyholt[0], coord_maalepunkt[1])
+
+        katet_tyholt_1 = distance_geopy(rettvinklet_tyholt, coord_maalepunkt)
+        katet_tyholt_2 = distance_geopy(rettvinklet_tyholt, coord_tyholt)
+
+        angle_tyholt = fortegn*np.degrees(np.arctan2(katet_tyholt_2, katet_tyholt_1))
+
+        north_referance_angle_dict[key] = {'nidaros': angle_nidaros, 'tyholt': angle_tyholt}
+    return north_referance_angle_dict
 
 
 def get_location(person: str) -> dict[str, dict[str, float]]:
