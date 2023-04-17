@@ -142,11 +142,15 @@ def analyze_results(
     return results
 
 
-def get_declination(måling, angle, save = True):
-    tot_dict = get_magnetic_field_reference_angles_dict(måling)
+def get_declination(measurement, angle_input_dict, save = True):
+    """
+    angle: {'person': angle}
+    """
+    tot_dict = get_magnetic_field_reference_angles_dict(measurement)
     results = {}
     for i, j in tot_dict.items():
         for k in range(len(j[1])):
+            angle = angle_input_dict[i]
             tot_dict[i][1][k] = calculate_declination(j[1][k], angle)
     
     for l in tot_dict.keys():
@@ -161,10 +165,9 @@ def get_declination(måling, angle, save = True):
 
     if save:
         load_data.save_results(
-            results, Path('Declination') / f"{måling}.toml"
+            results, Path('Declination') / f"{measurement}.toml"
         )
     return results
 
 
 
-    
