@@ -140,3 +140,31 @@ def analyze_results(
             results, Path(measurement_type) / f"{measurement_name}.toml"
         )
     return results
+
+
+def get_declination(måling, angle, save = True):
+    tot_dict = get_magnetic_field_reference_angles_dict(måling)
+    results = {}
+    for i, j in tot_dict.items():
+        for k in range(len(j[1])):
+            tot_dict[i][1][k] = calculate_declination(j[1][k], angle)
+    
+    for l in tot_dict.keys():
+        angle_array = tot_dict[l][1]
+        internal_dict = {
+            "Average": np.average(angle_array),
+            "Median": np.median(angle_array),
+            "Stdev" : tstd(angle_array)
+        }
+
+        results[l] = internal_dict
+
+    if save:
+        load_data.save_results(
+            results, Path('Declination') / f"{måling}.toml"
+        )
+    return results
+
+
+
+    
