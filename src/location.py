@@ -1,6 +1,7 @@
 from __future__ import annotations
 import numpy as np
 from geopy import distance
+from geographiclib.geodesic import Geodesic
 import load_data
 from dataclasses import dataclass
 from scipy.stats import tstd
@@ -27,6 +28,7 @@ def convert_to_rad(coord: list) -> None:
 def distance_geopy(p1, p2):
     return distance.geodesic(p1, p2, ellipsoid="WGS-84").m
 
+
 def calculate_angle_north():
     '''
     Returns: dict med filnavn som key og dict med verdier for vinkler (grad) som values.
@@ -37,30 +39,16 @@ def calculate_angle_north():
         with open(pth, 'rb') as f:
             loc_data[pth.name] = tomllib.load(f)
 
-    north_referance_angle_dict = {}
+    north_reference_angle_dict = {}
     for key, item in loc_data.items():
         coord_maalepunkt = (item['Latitude (deg)']['avg'], item['Longitude (deg)']['avg'])
-    
-        # tre punkter i rettvinklet trekant. arctan gir vinkel.
-        # NIDAROS
-        fortegn = np.sign(coord_maalepunkt[1] - coord_nidaros[1])
-        rettvinklet_nidaros = (coord_nidaros[0], coord_maalepunkt[1])
-        katet_nidaros_1 = distance_geopy(rettvinklet_nidaros, coord_maalepunkt)
-        katet_nidaros_2 = distance_geopy(rettvinklet_nidaros, coord_nidaros)
 
-        angle_nidaros = fortegn*np.degrees(np.arctan2(katet_nidaros_2, katet_nidaros_1))
-
-        #TYHOLT
-        fortegn = np.sign(coord_maalepunkt[1] - coord_tyholt[1])
-        rettvinklet_tyholt = (coord_tyholt[0], coord_maalepunkt[1])
-
-        katet_tyholt_1 = distance_geopy(rettvinklet_tyholt, coord_maalepunkt)
-        katet_tyholt_2 = distance_geopy(rettvinklet_tyholt, coord_tyholt)
-
-        angle_tyholt = fortegn*np.degrees(np.arctan2(katet_tyholt_2, katet_tyholt_1))
-
-        north_referance_angle_dict[key] = {'nidaros': angle_nidaros, 'tyholt': angle_tyholt}
-    return north_referance_angle_dict
+        north_reference_angle_dict[key] = {
+            'nidaros':  -1 * Geodesic.WGS84.Inverse(*coord_maalepunkt, *coord_nidaros)['azi1'],
+            'tyholt':   -1 * Geodesic.WGS84.Inverse(*coord_maalepunkt, *coord_tyholt)['azi1'] 
+                        # vi har satt positive vinkler i motsatt retning (mult. med -1)
+        }
+    return north_reference_angle_dict
 
 
 def get_location(person: str) -> dict[str, dict[str, float]]:
