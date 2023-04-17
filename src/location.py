@@ -20,34 +20,38 @@ class Location:
     longitude: dict[str, float]
     latitude: dict[str, float]
 
-
-def convert_to_rad(coord: list) -> None:
-    for i in range(len(coord)):
-        coord[i] = np.radians(coord[i])
-
-def distance_geopy(p1, p2):
-    return distance.geodesic(p1, p2, ellipsoid="WGS-84").m
-
-
 def calculate_angle_north():
     '''
-    Returns: dict med filnavn som key og dict med verdier for vinkler (grad) som values.
-    e.g.: {'navn_location.toml': {'nidaros': 25, 'tyholt': 80}}
+    Uses location data in ./Data/Location/ to calculate angles (azimuts)
+
+    Returns: dict {MEASURMENT: {PERSON: angle}}
+    e.g.: {'Nidarosdomen': {'Oskar': 25.144, 'Thorb': 25.4857}}
     '''
     loc_data = {}
     for pth in DIR_PATH_RESULTS_LOCATION.iterdir():
+        name = pth.name.split('_')[0]
         with open(pth, 'rb') as f:
-            loc_data[pth.name] = tomllib.load(f)
+            loc_data[name] = tomllib.load(f)
 
     north_reference_angle_dict = {}
-    for key, item in loc_data.items():
+    measure_person = [(m, p) for m in load_data.MEASUREMENTS for p in load_data.PERSONS]
+    for (m, p) in measure_person:
+        if not m in north_reference_angle_dict:
+            north_reference_angle_dict[m] = {}
+        north_reference_angle_dict[m][p] = NotImplemented
+
+    for name, item in loc_data.items():
+        angle: int = None
         coord_maalepunkt = (item['Latitude (deg)']['avg'], item['Longitude (deg)']['avg'])
 
-        north_reference_angle_dict[key] = {
-            'nidaros':  -1 * Geodesic.WGS84.Inverse(*coord_maalepunkt, *coord_nidaros)['azi1'],
-            'tyholt':   -1 * Geodesic.WGS84.Inverse(*coord_maalepunkt, *coord_tyholt)['azi1'] 
-                        # vi har satt positive vinkler i motsatt retning (mult. med -1)
-        }
+        for measurement in load_data.MEASUREMENTS:
+            if measurement == load_data.Measurement.nidarosdomen:
+                angle = -1 * Geodesic.WGS84.Inverse(*coord_maalepunkt, *coord_nidaros)['azi1']
+            else:
+                angle = -1 * Geodesic.WGS84.Inverse(*coord_maalepunkt, *coord_tyholt)['azi1']
+            
+            north_reference_angle_dict[measurement][name] = angle
+
     return north_reference_angle_dict
 
 
@@ -82,3 +86,7 @@ def analyze_location_data(
     if save:
         load_data.save_results(results, Path("Location") / f"{person}_location.toml")
     return results
+
+if __name__ == "__main__":
+    dictio = calculate_angle_north()
+    print(dictio)
