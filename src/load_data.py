@@ -6,6 +6,7 @@ import tomllib
 import tomli_w
 
 DATA_DIR = Path(__name__).parent / "Data"
+RESULTS_DIR = Path(__name__).parent / "Results"
 
 
 @dataclass
@@ -79,6 +80,22 @@ class LocationData:
 
     data: dict[str, RawDataObject]
     data_fields: list[str]
+
+
+@dataclass
+class ResultsObject:
+    """
+    Klasse for å kunne returnere resultatene
+
+    declination:
+    { måling => { navn => { resultattype => data } } }
+
+    inclination:
+    { måling => { navn => { resultattype => data } } }
+    """
+
+    declination: dict[str, dict[str, dict[str, float]]]
+    inclination: dict[str, dict[str, dict[str, float]]]
 
 
 def get_index_stamps(
@@ -174,6 +191,22 @@ def load_location_data() -> LocationData:
         "Vertical Accuracy (m)",
     ]
     return LocationData(location_data_dict, data_fields)
+
+
+def load_results() -> ResultsObject:
+    inclination_dict = {}
+    declination_dict = {}
+    DECLINATION_DIR = RESULTS_DIR / "Declination"
+    INCLINATION_DIR = RESULTS_DIR / "Inclination"
+    for file in DECLINATION_DIR.iterdir():
+        with open(file, "rb") as f:
+            results: dict[str, dict[str, float]] = tomllib.load(f)
+        declination_dict[file.name] = results
+    for file in INCLINATION_DIR.iterdir():
+        with open(file, "rb") as f:
+            results: dict[str, dict[str, float]] = tomllib.load(f)
+        inclination_dict[file.name] = results
+    return ResultsObject(declination_dict, inclination_dict)
 
 
 def save_results(results: dict, filepath: Path) -> None:
