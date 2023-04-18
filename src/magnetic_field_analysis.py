@@ -4,7 +4,7 @@ from scipy.stats import tstd
 import tomli_w
 from pathlib import Path
 import load_data
-
+import location
 
 # ! Vemund har flippet y-aksen ?
 
@@ -45,7 +45,13 @@ def calculate_declination(
     Returns:
         np.ndarray: deklinasjon_array (grader)
     """
-    return field_reference_angles - north_reference_angle
+    angle_B_field_N = field_reference_angles - north_reference_angle
+
+    # endre til vinkel mellom -180 og 180 grader
+    if angle_B_field_N > 180:
+        angle_B_field_N = angle_B_field_N - 360
+
+    return angle_B_field_N
 
 
 def get_magnetic_field_reference_angles_dict(measurement: str) -> dict[str, np.ndarray]:
@@ -109,6 +115,7 @@ def analyze_results(
     results_dict: dict[str, np.ndarray],
     measurement_type: str,
     measurement_name: str,
+    num_decimals: int = 2,
     save: bool = True,
 ) -> dict[str, dict[str, float]]:
     """utfører en analyse av alle dataene for en gitt måling
@@ -130,9 +137,9 @@ def analyze_results(
     for person, results_array in results_dict.items():
         angles_array = results_array[1]
         person_result = {
-            "Average": np.mean(angles_array),
-            "Median": np.median(angles_array),
-            "Stdev": tstd(angles_array),
+            "Average": np.mean(angles_array).round(num_decimals),
+            "Median": np.median(angles_array).round(num_decimals),
+            "Stdev": tstd(angles_array).round(num_decimals),
         }
         results[person] = person_result
     if save:
@@ -142,7 +149,9 @@ def analyze_results(
     return results
 
 
-def get_declination(measurement, angle_input_dict, save=True):
+def get_declination(
+    measurement, angle_input_dict, num_decimals: int = 2, save_to_file: bool = True
+):
     """
     angle: {'person': angle}
     """
@@ -156,13 +165,71 @@ def get_declination(measurement, angle_input_dict, save=True):
     for l in tot_dict.keys():
         angle_array = tot_dict[l][1]
         internal_dict = {
-            "Average": np.average(angle_array),
-            "Median": np.median(angle_array),
-            "Stdev": tstd(angle_array),
+            "Average": np.average(angle_array).round(num_decimals),
+            "Median": np.median(angle_array).round(num_decimals),
+            "Stdev": tstd(angle_array).round(num_decimals),
         }
 
         results[l] = internal_dict
 
-    if save:
+    if save_to_file:
         load_data.save_results(results, Path("Declination") / f"{measurement}.toml")
     return results
+
+
+def analyze_all(
+    ta_med_vemund_nidaros: bool, num_decimals: int = 2, save_to_file: bool = True
+) -> dict:
+    # measurement types
+    type_declination: str = "Declination"
+    type_inclination: str = "Inclination"
+
+    # measurement to exclude
+    ex_measurement = load_data.Measurement.nidarosdomen
+    ex_person = load_data.Person.vemund
+
+    # saving
+    filename = "all" if ta_med_vemund_nidaros else "exclude_vemund_nidaros"
+    SAVE_PATH = Path("ALL") / f"{filename}.toml"
+
+    angle_dict = location.calculate_angle_north()
+
+    all = {type_declination: [], type_inclination: []}
+    for measurement in load_data.MEASUREMENTS:
+        incl = get_inclination_dict(measurement=measurement)
+        decl_ref = get_magnetic_field_reference_angles_dict(measurement=measurement)
+
+        for person, value in decl_ref.items():
+            if not ta_med_vemund_nidaros:
+                if measurement == ex_measurement and person == ex_person:
+                    continue
+            angle_north = angle_dict[measurement][person]
+            for ref_angle in value[1]:
+                declination_angle = calculate_declination(ref_angle, angle_north)
+                if declination_angle > 180:
+                    all[type_declination].append(declination_angle - 360)
+                else:
+                    all[type_declination].append(declination_angle)
+
+        for key, value in incl.items():
+            if not ta_med_vemund_nidaros:
+                if measurement == ex_measurement and key == ex_person:
+                    continue
+            for incl_angle in value[1]:
+                all[type_inclination].append(incl_angle)
+
+    result = {type_declination: [], type_inclination: []}
+    for key, value in all.items():
+        internal_dict = {
+            "Average": np.average(value).round(num_decimals),
+            "Median": np.median(value).round(num_decimals),
+            "Stdev": tstd(value).round(num_decimals),
+        }
+        result[key] = internal_dict
+
+    if save_to_file:
+        load_data.save_results(result, SAVE_PATH)
+        return result
+    else:
+        print(result)
+        return result
