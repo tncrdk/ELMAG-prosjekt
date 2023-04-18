@@ -96,15 +96,11 @@ def scatter_plot_inclination():
     ax.set_thetamin(0)
     ax.set_thetamax(90)
     ax.set_theta_direction(-1)
-    # ax.set_theta_zero_location("N")
     ax.set_yticklabels([])
     ticks = np.arange(0, np.pi / 2 + 0.1, np.pi / 12)
     ticks[np.round(ticks, 3) == 0] = 0
     ax.xaxis.set_ticks(ticks)
     ax.tick_params(axis="x", which="major", pad=10)
-    # ax.text(-0.05, 1.14, "N", fontsize=23)
-    # ax.text(-np.pi / 2 * 1.08, 1.1, "W", fontsize=23)
-    # ax.text(np.pi / 2 * 1.1, 1, "E", fontsize=23)
     # produce a legend with the unique colors from the scattenr
     ax.legend(
         handles=scatter.legend_elements()[0],
@@ -115,21 +111,3 @@ def scatter_plot_inclination():
     fig.savefig(RESULTS_DIR / "inclination.svg")
     fig.savefig(RESULTS_DIR / "inclination.png")
     fig.clear()
-
-
-def test_plot():
-    # define data
-    x = [3, 4, 4, 6, 8, 9]
-    y = [12, 14, 17, 16, 11, 13]
-
-    # define values, classes, and colors to map
-    values = [0, 0, 1, 2, 2, 2]
-    classes = ["A", "B", "C"]
-    colors = ListedColormap(["red", "blue", "purple"])
-
-    # create scatterplot
-    scatter = plt.scatter(x, y, c=values, cmap=colors)
-
-    # add legend with class names
-    plt.legend(handles=scatter.legend_elements()[0], labels=classes)
-    plt.show()
