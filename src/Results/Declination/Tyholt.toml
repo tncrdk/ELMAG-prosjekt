@@ -1,14 +1,14 @@
 [Oskar]
-Average = 363.1769704240827
-Median = 363.1026979431933
-Stdev = 0.7152183636599412
+Average = 3.18
+Median = 3.1
+Stdev = 0.72
 
 [Thorb]
-Average = 354.2413126896232
-Median = 354.22352288541157
-Stdev = 0.8407751807314308
+Average = -5.76
+Median = -5.78
+Stdev = 0.84
 
 [Vemund]
-Average = 349.88153705214444
-Median = 349.88612868988525
-Stdev = 0.33006633407648617
+Average = -10.12
+Median = -10.11
+Stdev = 0.33
