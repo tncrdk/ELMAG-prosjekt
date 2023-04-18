@@ -130,9 +130,9 @@ def analyze_results(
     for person, results_array in results_dict.items():
         angles_array = results_array[1]
         person_result = {
-            "avg": np.mean(angles_array),
-            "median": np.median(angles_array),
-            "stdev": tstd(angles_array),
+            "Average": np.mean(angles_array),
+            "Median": np.median(angles_array),
+            "Stdev": tstd(angles_array),
         }
         results[person] = person_result
     if save:
@@ -142,7 +142,7 @@ def analyze_results(
     return results
 
 
-def get_declination(measurement, angle_input_dict, save = True):
+def get_declination(measurement, angle_input_dict, save=True):
     """
     angle: {'person': angle}
     """
@@ -152,22 +152,17 @@ def get_declination(measurement, angle_input_dict, save = True):
         for k in range(len(j[1])):
             angle = angle_input_dict[i]
             tot_dict[i][1][k] = calculate_declination(j[1][k], angle)
-    
+
     for l in tot_dict.keys():
         angle_array = tot_dict[l][1]
         internal_dict = {
             "Average": np.average(angle_array),
             "Median": np.median(angle_array),
-            "Stdev" : tstd(angle_array)
+            "Stdev": tstd(angle_array),
         }
 
         results[l] = internal_dict
 
     if save:
-        load_data.save_results(
-            results, Path('Declination') / f"{measurement}.toml"
-        )
+        load_data.save_results(results, Path("Declination") / f"{measurement}.toml")
     return results
-
-
-

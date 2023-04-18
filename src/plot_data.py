@@ -12,7 +12,7 @@ def plot_one_to_one(
     xlabel: str,
     ylabel: str,
     title: str,
-    filepath: str | None = None,
+    filepath: Path | None = None,
 ) -> None:
     """Function that plots one set of data. One list of x-values and one list of y-values
 
@@ -40,7 +40,7 @@ def plot_one_to_many(
     xlabel: str,
     ylabel: str,
     title: str,
-    filepath: str | None = None,
+    filepath: Path | None = None,
 ) -> None:
     """Function that plots multiple sets of data. All the x-values arrays goes in x_arrays, and likewise for y_arrays.
 
@@ -69,7 +69,7 @@ def plot_many_to_many(
     xlabel: str,
     ylabel: str,
     title: str,
-    filepath: str | None = None,
+    filepath: Path | None = None,
 ) -> None:
     """Function that plots multiple sets of data. All the x-values arrays goes in x_arrays, and likewise for y_arrays.
 
@@ -91,7 +91,7 @@ def plot_many_to_many(
     save_or_show_plot(filepath)
 
 
-def save_or_show_plot(filepath: str | None):
+def save_or_show_plot(filepath: Path | None):
     if filepath:
         save_path = FOLDER_PATH / f"{filepath}.svg"
         plt.savefig(save_path)
