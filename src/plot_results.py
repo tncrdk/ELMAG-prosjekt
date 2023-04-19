@@ -66,7 +66,7 @@ def scatter_plot_declination():
         title="Person",
         labels=PERSON_PHONE.values(),
     )
-    fig.savefig(RESULTS_DIR / "declination.svg")
+    fig.savefig(RESULTS_DIR / "declination.pdf")
     fig.savefig(RESULTS_DIR / "declination.png")
     fig.clear()
 
@@ -114,6 +114,6 @@ def scatter_plot_inclination():
         title="Person",
         labels=PERSON_PHONE.values(),
     )
-    fig.savefig(RESULTS_DIR / "inclination.svg")
+    fig.savefig(RESULTS_DIR / "inclination.pdf")
     fig.savefig(RESULTS_DIR / "inclination.png")
     fig.clear()
