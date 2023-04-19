@@ -10,6 +10,12 @@ PERSON_COLORS = {
     load_data.Person.vemund: 2,
 }
 
+PERSON_PHONE = {
+    load_data.Person.thorbjorn: "iPhone SE",
+    load_data.Person.oskar: "Samsung Galaxy A40",
+    load_data.Person.vemund: "iPhone 13",
+}
+
 RESULTS_DIR = Path(__name__).parent / "Plots" / "Results"
 
 
@@ -19,7 +25,7 @@ def scatter_plot_declination():
     fig, ax = plt.subplots(subplot_kw={"projection": "polar"})
     angle_list = []
     radius_list = []
-    person_color_list = []
+    phone_color_list = []
     radius = 0.4
     d_radius = 0.05
     for measurement_dict in declination_dict.values():
@@ -28,14 +34,14 @@ def scatter_plot_declination():
             angle_rad = np.deg2rad(angle)
             angle_list.append(angle_rad)
             radius_list.append(radius)
-            person_color_list.append(PERSON_COLORS[person])
+            phone_color_list.append(PERSON_COLORS[person])
             radius += d_radius
 
     scatter = ax.scatter(
         angle_list,
         radius_list,
         s=30,
-        c=person_color_list,
+        c=phone_color_list,
         cmap=ListedColormap(["red", "darkblue", "orange"]),
         alpha=0.75,
     )
@@ -58,7 +64,7 @@ def scatter_plot_declination():
         handles=scatter.legend_elements()[0],
         loc=(0.8, 0.8),
         title="Person",
-        labels=PERSON_COLORS.keys(),
+        labels=PERSON_PHONE.values(),
     )
     fig.savefig(RESULTS_DIR / "declination.svg")
     fig.savefig(RESULTS_DIR / "declination.png")
@@ -106,7 +112,7 @@ def scatter_plot_inclination():
         handles=scatter.legend_elements()[0],
         loc=(0.75, 0),
         title="Person",
-        labels=PERSON_COLORS.keys(),
+        labels=PERSON_PHONE.values(),
     )
     fig.savefig(RESULTS_DIR / "inclination.svg")
     fig.savefig(RESULTS_DIR / "inclination.png")
